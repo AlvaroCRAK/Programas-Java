@@ -1,0 +1,56 @@
+import java.util.*;
+public class Main{
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("========= PAGO DE OBRERO ===========");
+		int material;
+		int categoria;
+		
+		double tarifa=0, bonificacion=0;
+		int cantidad;
+		
+		
+		do {
+			System.out.println("Ingrese el material: ");
+			System.out.print("Tejas        [1]\nLosetas      [2]");
+			material = scanner.nextInt();
+		}while(material != 1 && material !=2);
+		do {
+			System.out.println("Ingrese la Categoria: ");
+			System.out.print("A          [1]\nB          [2]\nC          [3]");
+			categoria = scanner.nextInt();
+			
+		}while(categoria!=1 && categoria!=2&&categoria!=3);
+		
+		switch(categoria) {
+		case 1:
+			if(material == 1)tarifa = 2.5;
+			else tarifa = 2;
+			break;
+		case 2:
+			if(material == 1)tarifa =2;
+			else tarifa = 1.5;
+			break;
+		case 3:
+			if(material == 1)tarifa=1.5;
+			else tarifa =1;
+			break;
+		}
+		do {
+		 	System.out.print("Ingrese las unidades a producir: ");
+		 	cantidad = scanner.nextInt();
+		}while(cantidad<0);
+		
+		if(cantidad>1000)bonificacion = 150;
+		else if(cantidad>500)bonificacion = 100;
+		else if(cantidad>250)bonificacion = 50;
+		else if(cantidad>0)bonificacion = 0;
+		System.out.println("============= TOTAL ================");
+		System.out.printf("El pago bruto es de: %.2f\n" , (cantidad*tarifa));
+		System.out.printf("La bonificacion es de: %.2f\n", (bonificacion));
+		System.out.print("El descuento es de: 75\n");
+		System.out.printf("El pago neto es de: %.2f", (((cantidad*tarifa) + bonificacion) -75));
+		
+		scanner.close();
+	}
+}
