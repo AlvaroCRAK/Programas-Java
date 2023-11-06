@@ -17,13 +17,13 @@ public class Main{
 			
 			if(conversion=='E' || conversion =='e') {
 				moneda = soles/3.5;
-				System.out.print(moneda + " euros");
+				System.out.printf("%.2f euros",moneda  );
 			}else if(conversion=='D' || conversion == 'd') {
 				moneda = soles/2.8;
-				System.out.print(moneda + " dolares");
+				System.out.printf("%.2f dolares",moneda  );
 			}else if(conversion=='Y' || conversion=='y') {
 				moneda = soles/0.03;
-				System.out.print(moneda + " yenes");
+				System.out.printf("%.2f yenes",moneda  );
 			}
 			System.out.print("\nDesea contiuar: \nSi   [1]\nNo[otro numero]");
 			continuar = scanner.nextInt();
