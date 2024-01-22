@@ -1,0 +1,124 @@
+import java.util.Scanner;
+import java.util.InputMismatchException;
+public class Main{
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("============= SUELDO DE PROFESORES============\n");
+		int num = 0;
+		do {
+			try {
+				System.out.print("Ingrese el numero de docentes a evaluar: "); num = scanner.nextInt();
+			}catch(InputMismatchException exception) {
+				System.out.print("Ingrese una opcion valida: \n"); scanner.nextLine();
+			}
+		}while(num <= 0);
+		scanner.nextLine();
+		String[] nombres = new String[num]; String[] estudios = new String[num]; int[] hijos = new int[num]; double[] bonos = new double[num]; double[] sueldos = new double[num]; char[] bono = new char[num];
+		int contrato = 0, estudio = 0; double sumatoria = 0;
+		for(int i = 0; i < num; i++) {
+			System.out.println("===============================");
+			
+			do {
+				try {
+					System.out.print("Ingrese el nombre del docente " + (i+1) + ": "); nombres[i] = scanner.nextLine();
+				}catch(Exception exception) {
+					System.out.print("Opcion no valida:\n"); scanner.nextLine();
+				}
+			}while(nombres[i] == "" && nombres[i] == " ");
+			
+			do {
+				try {
+					System.out.printf("Ingrese el grado de estudios del docente: %s\nIngeniero:    [1]\nMaestria:   [2]\nDoctorado:   [3]\n", nombres[i]); estudio = scanner.nextInt();
+				}catch(InputMismatchException exception) {
+					System.out.print("Ingrese una opcion valida:\n"); scanner.nextLine();
+				}
+			}while(estudio != 1 && estudio != 2 && estudio != 3);
+			
+			do {
+				try {
+					System.out.printf("Ingrese el tipo de contrato del docente: %s\nDocente contratado:   [1]\nDocente nombrado:   [2]\n", nombres[i]); contrato = scanner.nextInt();
+				}catch(InputMismatchException exception) {
+					System.out.print("Ingrese una opcion valida: \n"); scanner.nextLine();
+				}
+			}while(contrato != 1 && contrato != 2);
+			
+			do {
+				try {
+					System.out.printf("Ingrese el numero de hijos del docente: %s\n", nombres[i]); hijos[i] = scanner.nextInt();
+				}catch(Exception exception) {
+					System.out.print("Ingrese un dato valido:\n"); scanner.nextLine();
+				}
+			}while(hijos[i] < 0);
+			
+			switch(estudio) {
+			case 1:
+				estudios[i] = "Ingeniero"; break;
+			case 2:
+				estudios[i] = "Maestria"; break;
+			case 3:
+				estudios[i] = "Doctorado"; break;
+			}
+			
+			switch(estudios[i]) {
+			case "Ingeniero":
+				if(contrato == 1) sueldos[i] = 850;
+				else sueldos[i] = 1000;
+				break;
+			case "Maestria":
+				if(contrato == 1) sueldos[i] = 1400;
+				else sueldos[i] = 1800;
+				break;
+			case "Doctorado":
+				if(contrato == 1) sueldos[i] = 1700;
+				else sueldos[i] = 2500;
+				break;
+			}
+			
+			sumatoria += sueldos[i];
+			
+			if(hijos[i] >= 6) {
+				bonos[i] = sueldos[i] * 0.1;
+				bono[i] = 'a';
+			}else if(hijos[i] >= 3) {
+				bonos[i] = sueldos[i] * 0.15;
+				bono[i] = 'b';
+			}else {
+				bonos[i] = sueldos[i] * 0.2;
+				bono[i] = 'c';
+			}
+			scanner.nextLine();
+
+		}
+		System.out.print("------------------------------------------------\n");
+		for(int i = 0; i < num; i++) {
+			System.out.printf("======= Docente: %s =======\n", nombres[i]);
+			System.out.printf("Grado de estudios: %s\nNumero de hijos: %d\nBono: %f\nSueldo bruto: %f\n\n", estudios[i], hijos[i], bonos[i], sueldos[i]);
+		}
+		System.out.print("================================================\n");
+		System.out.printf("Sumatoria de todos los sueldos brutos de los docentes: %f\n", sumatoria);
+		
+		int hijosa = 0, hijosb = 0, hijosc = 0;
+		for(int i = 0; i < num; i++) {
+			if(hijos[i] > 5) hijosc++;
+			else if(hijos[i] > 2) hijosb++;
+			else hijosa++;
+		}
+		
+		System.out.printf("Cantidad de docentes de hijos entre los rangos:\n1 - 2:   %d\n3 - 5:   %d\n6 - mas:   %d\n", hijosa, hijosb, hijosc);
+		int a = 0, b = 0, c = 0;
+		for(int i = 0; i < num; i++) {
+			switch(bono[i]) {
+			case 'a':
+				a++; break;
+			case 'b':
+				b++; break;
+			case 'c':
+				c++; break;
+			}
+		}
+		System.out.printf("Cantidad de docentes que recibieron los bonos: \n10%%:    %d\n15%%:     %d\n20%%:     %d", a, b, c);
+		
+		scanner.close();
+	}
+}
+//zublime
