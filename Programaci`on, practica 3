@@ -92,10 +92,10 @@ public class Main{
 		System.out.print("------------------------------------------------\n");
 		for(int i = 0; i < num; i++) {
 			System.out.printf("======= Docente: %s =======\n", nombres[i]);
-			System.out.printf("Grado de estudios: %s\nNumero de hijos: %d\nBono: %f\nSueldo bruto: %f\n\n", estudios[i], hijos[i], bonos[i], sueldos[i]);
+			System.out.printf("Grado de estudios: %s\nNumero de hijos: %d\nBono: %.2f\nSueldo bruto: %.2f\n\n", estudios[i], hijos[i], bonos[i], sueldos[i]);
 		}
 		System.out.print("================================================\n");
-		System.out.printf("Sumatoria de todos los sueldos brutos de los docentes: %f\n", sumatoria);
+		System.out.printf("Sumatoria de todos los sueldos brutos de los docentes: %.2f\n", sumatoria);
 		
 		int hijosa = 0, hijosb = 0, hijosc = 0;
 		for(int i = 0; i < num; i++) {
