@@ -1,0 +1,31 @@
+import java.io.IOException;
+import java.util.Scanner;
+import java.io.FileWriter;
+public class Main{
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        try{
+            FileWriter fileWriter = new FileWriter("alvaro.txt");
+            String texto;
+            System.out.println("Ingrese el texto a escribir: \"finish para salir\"");
+            do {
+                texto = scanner.nextLine();
+                String[] palabras = texto.split(" ");
+                if (palabras[palabras.length - 1].equals("finish")){
+                    texto = eliminarFinish(texto);
+                    fileWriter.write(texto);
+                    break;
+                }
+                fileWriter.write(texto + "\n");
+            }while(true);
+            fileWriter.close();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+    public static String eliminarFinish(String texto){
+        String texto2;
+        texto2 = texto.substring(0, texto.length() - 6);
+        return texto2;
+    }
+}
