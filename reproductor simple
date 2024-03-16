@@ -12,6 +12,7 @@ public class Main{
             clip.open(audioInputStream);
             System.out.println("Salsa Valentina (Rojuu) :\nPlay: [p]\nStop: [s]\nReset: [r]\nSalir: [Q]");
             char input = 0;
+            final long n = 1_000_000L;
             while(input != 'Q'){
                 input = scanner.next().charAt(0);
                 input = Character.toUpperCase(input);
@@ -21,11 +22,11 @@ public class Main{
                     case 'R':
                     case '1': clip.setMicrosecondPosition(0); break;
                     case 'Q': clip.close(); break;
-                    case '2': clip.setMicrosecondPosition(185 * 1_000_000L); break;
-                    case '3': clip.setMicrosecondPosition(373 * 1_000_000L); break;
-                    case '4': clip.setMicrosecondPosition(501 * 1_000_000L); break;
-                    case '5': clip.setMicrosecondPosition(734 * 1_000_000L); break;
-                    case '6': clip.setMicrosecondPosition(971 * 1_000_000L); break;
+                    case '2': clip.setMicrosecondPosition(185 * n); break;
+                    case '3': clip.setMicrosecondPosition(373 * n); break;
+                    case '4': clip.setMicrosecondPosition(501 * n); break;
+                    case '5': clip.setMicrosecondPosition(734 * n); break;
+                    case '6': clip.setMicrosecondPosition(971 * n); break;
                     default:
                         System.out.println("Opcion no valida :c"); break;
                 }
