@@ -1,0 +1,3 @@
+interface ProductoElectronico {
+    void encender();
+}
